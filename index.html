@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Docker-lamp by kaushalkishorejaiswal</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Docker-lamp</h1>
+        <h2>Dockerfile to build LAMP (Linux, Apache2, MySQL, PHP) Installed Containers</h2>
+        <a href="https://github.com/kaushalkishorejaiswal/Docker-LAMP" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <p>Created by Kaushal Kishore <br>
+Email : <a href="mailto:kaushal.rahuljaiswal@gmail.com">kaushal.rahuljaiswal@gmail.com</a><br>
+Website : <a href="http://www.kaushalkishore.com">http://www.kaushalkishore.com</a><br></p>
+
+<h2>
+<a name="dockerfile-for-creating-docker-image-for-lamp-linux-apache2-mysql-php" class="anchor" href="#dockerfile-for-creating-docker-image-for-lamp-linux-apache2-mysql-php"><span class="octicon octicon-link"></span></a>Dockerfile for creating docker image for LAMP (Linux, Apache2, MySQL, PHP)</h2>
+
+<h4>
+<a name="steps-for-creating-image-from-the-docker-lamp" class="anchor" href="#steps-for-creating-image-from-the-docker-lamp"><span class="octicon octicon-link"></span></a>Steps for creating image from the Docker-LAMP:</h4>
+
+<p><b>Step 1 :</b> Clone the Docker-LAMP.git</p>
+
+<pre>
+<b>Command: </b>
+git clone https://github.com/kaushalkishorejaiswal/Docker-LAMP.git
+</pre>
+
+<p><b>Step 2 :</b> Change the directory to the clone folder</p>
+
+<pre>
+<b>Command:</b>
+cd Docker-LAMP
+</pre>
+
+<p><b>Step 3 :</b> Create the Docker Image</p>
+
+<pre>
+<b>Command: </b>
+sudo docker build -t ##NAME_OF_YOUR_DOCKER_IMAGE## .
+</pre>
+
+<pre>
+<b>Note : </b>
+  a). This command will be fired where the DockerFile will be placed
+  b). ##NAME_OF_YOUR_DOCKER_IMAGE## : Replace it with your image name
+  c). . : (.) Symbols shows that your Dockerfile is available on the same directory where you are running the command.
+</pre>
+
+<p><b>Step 4 :</b> Create an Apache,PHP,MySQL Installed Container from the image
+<b>Command Syntax: </b>
+sudo docker run --name [container name] -p [port to access (New Port):port exposed(original port)] -i -t [image name]</p>
+
+<pre>
+<b>Command:</b>
+sudo docker run --name ##NAME_OF_YOUR_DOCKER_CONTAINER## -d -p 8082:80 -p3307:3306 ##NAME_OF_YOUR_DOCKER_IMAGE##
+</pre>
+
+<p><b>Step 5 :</b> Now you can access your apache container from your web browser.</p>
+
+<pre>
+<b>Command:</b>
+http://127.0.0.1:8082/
+</pre>
+
+<p><b>Step 6 :</b> You can access your MySQL using the below command.</p>
+
+<pre>
+<b>Command:</b>
+mysql -uroot -proot -h172.17.42.1 -P3037
+</pre>
+
+<p><b>Important Notes</b></p>
+
+<ul>
+<li>
+    You can get the IP of the container using the command
+    <ul><li>docker inspect ##Container ID##</li></ul>
+</li>
+  <li>
+    To get the Container ID. Use the below command
+    <ul><li>docker ps -a</li></ul>
+</li>
+  <li>You can also access the Apache using the container IP
+  </li>
+<li>Read more details of MySQL <a href="https://github.com/kaushalkishorejaiswal/Docker-MySQL">Click Here</a>
+</li>
+</ul><h4>
+<a name="some-other-important-commands" class="anchor" href="#some-other-important-commands"><span class="octicon octicon-link"></span></a>Some other important commands:</h4>
+
+<ul>
+<li>
+<b>docker images :</b> To list all the images of your docker</li>
+<li>
+<b>docker ps :</b> To list all the runing containers</li>
+<li>
+<b>docker kill ##CONTAINER_NAME## :</b> To kill the runing container</li>
+<li>
+<b>docker rm ##CONTAINER_NAME## :</b> To delete the container from the system.</li>
+<li>
+<b>docker inspect ##CONTAINER_NAME## :</b> To get all the information about the container.</li>
+<li>
+<b>docker logs ##CONTAINER_NAME## :</b> To get the logs of the container.</li>
+<li>
+<b>docker ps -a:</b> To get the listing of all the containers.</li>
+</ul><h4>
+<a name="additional-notes" class="anchor" href="#additional-notes"><span class="octicon octicon-link"></span></a>Additional Notes:</h4>
+
+<p><b>Command for attaching the volume of your hosted machine:</b></p>
+
+<pre>
+<b>Command Syntax:</b>
+sudo docker run --name ##NAME_OF_YOUR_DOCKER_CONTAINER## -d -p 8082:80 -v ##HOSTED_VOLUME_LOCATION##:##CONTAINER_VOLUME_LOCATION## ##YOUR_IMAGE_NAME##
+</pre>
+
+<pre>
+<b>Command Example:</b>
+sudo docker run --name apache_ins -d -p 8082:80 -v /var/www/kaushal:/var/www apache_kaushal
+</pre>
+
+<pre>
+Read more details of Apache and PHP <a href="https://github.com/kaushalkishorejaiswal/Docker-Apache2PHP">Click Here</a>
+</pre>
+
+<p><b>Related Projects</b></p>
+
+<ul>
+<li>Docker-Apache2 : https://github.com/kaushalkishorejaiswal/Docker-Apache2 </li>
+  <li>Docker-Apache2PHP : https://github.com/kaushalkishorejaiswal/Docker-Apache2PHP </li>
+  <li>Docker-MySQL :  https://github.com/kaushalkishorejaiswal/Docker-MySQL </li>
+</ul>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/kaushalkishorejaiswal/Docker-LAMP/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/kaushalkishorejaiswal/Docker-LAMP/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/kaushalkishorejaiswal/Docker-LAMP"></a> is maintained by <a href="https://github.com/kaushalkishorejaiswal">kaushalkishorejaiswal</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
