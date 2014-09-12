@@ -50,7 +50,6 @@ http://127.0.0.1:8082/
 <b>Command:</b>
 mysql -uroot -proot -h172.17.42.1 -P3037
 </pre>
-<pre>
 <b>Important Notes</b>
 <ul>
   <li>
@@ -64,8 +63,6 @@ mysql -uroot -proot -h172.17.42.1 -P3037
   <li>You can also access the Apache using the container IP</p>
   <li>Read more details of MySQL <a href="https://github.com/kaushalkishorejaiswal/Docker-MySQL">Click Here</a></li>
 </ul>
-</pre>
-
 
 <h4>Some other important commands:</h4>
 <ul>
