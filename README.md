@@ -91,4 +91,13 @@ sudo docker run --name apache_ins -d -p 8082:80 -v /var/www/kaushal:/var/www apa
 </pre>
 <pre>
 Read more details of Apache and PHP <a href="https://github.com/kaushalkishorejaiswal/Docker-Apache2PHP">Click Here</a>
+</pre>
 
+<pre>
+<b>Related Projects</b>
+<ul>
+  <li>Docker-Apache2 : https://github.com/kaushalkishorejaiswal/Docker-Apache2 </li>
+  <li>Docker-Apache2PHP : https://github.com/kaushalkishorejaiswal/Docker-Apache2PHP </li>
+  <li>Docker-MySQL :  https://github.com/kaushalkishorejaiswal/Docker-MySQL </li>
+</ul>
+</pre>
