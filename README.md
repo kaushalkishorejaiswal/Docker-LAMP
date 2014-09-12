@@ -45,7 +45,7 @@ sudo docker run --name ##NAME_OF_YOUR_DOCKER_CONTAINER## -d -p 8082:80 -p3307:33
 http://127.0.0.1:8082/
 </pre>
 
-<b>Step 5 :</b> You can access your MySQL using the below command.
+<b>Step 6 :</b> You can access your MySQL using the below command.
 <pre>
 <b>Command:</b>
 mysql -uroot -proot -h172.17.42.1 -P3037
@@ -61,6 +61,7 @@ mysql -uroot -proot -h172.17.42.1 -P3037
     To get the Container ID. Use the below command
     <ul><li>docker ps -a</li></ul>
   </li>
+  <li>You can also access the Apache using the container IP</p>
   <li>Read more details of MySQL <a href="https://github.com/kaushalkishorejaiswal/Docker-MySQL">Click Here</a></li>
 </ul>
 </pre>
